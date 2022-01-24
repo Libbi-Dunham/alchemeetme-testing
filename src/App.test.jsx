@@ -1,19 +1,14 @@
 import { screen, render } from '@testing-library/react'
-import Header from './components/layout/Header'
-
-const user = {}
+import App from './App'
 
 test('Should render the header image', async () => {
-  render(<Header user={user} />)
+  render(<App />)
 
-  const heading = screen.getByAltText(/Alchemy Logo/i)
+  const heading = await screen.findByAltText(/Alchemy Logo/i)
+  const name = screen.getByText(/meet/i)
+  const actName = await screen.findByText(/Vonta/i)
 
   expect(heading).toBeInTheDocument()
+  expect(name).toBeInTheDocument()
+  expect(actName).toBeInTheDocument()
 })
-
-// test('should render the profile name', async () => {
-//   render(<Header />)
-
-//   const heading = await screen.findByRole('paragraph', { name: /name:/i })
-//   const name = 'Meet Vonta!'
-// })
